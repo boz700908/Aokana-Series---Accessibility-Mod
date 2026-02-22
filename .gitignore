@@ -8,6 +8,12 @@ obj/
 # Decompiled game code (large, user-specific)
 decompiled/
 
+# Tools (large binaries)
+dnSpy/
+
+# Test files
+test_*.cs
+
 # OS files
 Thumbs.db
 Desktop.ini
