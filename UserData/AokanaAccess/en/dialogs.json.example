@@ -1,0 +1,18 @@
+{
+  "quit_confirm.title": "Quit Confirmation",
+  "quit_confirm.message": "Are you sure you want to quit?",
+  "quit_confirm.btnYes": "Yes",
+  "quit_confirm.btnNo": "No",
+  "load_confirm.title": "Load Confirmation",
+  "load_confirm.message": "Load this save?",
+  "load_confirm.btnYes": "Yes",
+  "load_confirm.btnNo": "No",
+  "overwrite_confirm.title": "Overwrite Confirmation",
+  "overwrite_confirm.message": "Overwrite this save?",
+  "overwrite_confirm.btnYes": "Yes",
+  "overwrite_confirm.btnNo": "No",
+  "title_confirm.title": "Return to Title",
+  "title_confirm.message": "Return to title screen?",
+  "title_confirm.btnYes": "Yes",
+  "title_confirm.btnNo": "No"
+}
