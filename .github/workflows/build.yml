@@ -1,0 +1,97 @@
+name: Build Aokana Accessibility Mod
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET Framework
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Download MelonLoader dependencies
+      run: |
+        # Create libs directory
+        New-Item -ItemType Directory -Force -Path "libs"
+
+        # Download MelonLoader v0.7.1
+        $melonUrl = "https://github.com/LavaGang/MelonLoader/releases/download/v0.7.1/MelonLoader.x86.zip"
+        Invoke-WebRequest -Uri $melonUrl -OutFile "MelonLoader.zip"
+        Expand-Archive -Path "MelonLoader.zip" -DestinationPath "MelonLoader_temp" -Force
+
+        # Copy required DLLs
+        Copy-Item "MelonLoader_temp/net35/MelonLoader.dll" -Destination "libs/"
+        Copy-Item "MelonLoader_temp/net35/0Harmony.dll" -Destination "libs/"
+
+        # Download UnityEngine DLLs (Unity 2018.2.19f1)
+        # Note: These should be provided in the repository or downloaded from a reliable source
+        Write-Host "Note: UnityEngine DLLs should be provided in libs/ directory"
+
+        # Cleanup
+        Remove-Item "MelonLoader.zip" -Force
+        Remove-Item "MelonLoader_temp" -Recurse -Force
+      shell: pwsh
+
+    - name: Restore NuGet packages
+      run: dotnet restore AokanaAccess.csproj
+
+    - name: Build project
+      run: dotnet build AokanaAccess.csproj --configuration Release --no-restore
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: AokanaAccess-Build
+        path: |
+          bin/Release/AokanaAccess.dll
+          UserData/**/*
+        retention-days: 30
+
+    - name: Create release package
+      run: |
+        # Create release directory structure
+        New-Item -ItemType Directory -Force -Path "release/Mods"
+        New-Item -ItemType Directory -Force -Path "release/UserData"
+
+        # Copy DLL
+        Copy-Item "bin/Release/AokanaAccess.dll" -Destination "release/Mods/"
+
+        # Copy UserData
+        Copy-Item -Path "UserData/*" -Destination "release/UserData/" -Recurse -Force
+
+        # Create README
+        @"
+# Aokana Accessibility Mod
+
+## Installation
+1. Install MelonLoader v0.7.1 to your Aokana game directory
+2. Copy the contents of this folder to your game directory:
+   - Mods/AokanaAccess.dll -> [Game]/Mods/
+   - UserData/ -> [Game]/UserData/
+
+## Usage
+- Press F12 to toggle debug mode
+- Press Alt+Shift+E to export menu IDs (debug mode only)
+
+For more information, visit: https://github.com/boz700908/Aokana-Series---Accessibility-Mod
+"@ | Out-File -FilePath "release/README.txt" -Encoding UTF8
+
+        # Create zip
+        Compress-Archive -Path "release/*" -DestinationPath "AokanaAccess-Release.zip" -Force
+      shell: pwsh
+
+    - name: Upload release package
+      uses: actions/upload-artifact@v3
+      with:
+        name: AokanaAccess-Release-Package
+        path: AokanaAccess-Release.zip
+        retention-days: 90

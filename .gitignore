@@ -14,6 +14,9 @@ dnSpy/
 # Test files
 test_*.cs
 
+# Libraries (DLLs should be obtained locally)
+libs/*.dll
+
 # OS files
 Thumbs.db
 Desktop.ini
