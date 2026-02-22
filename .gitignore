@@ -5,6 +5,10 @@
 bin/
 obj/
 
+# Release packages
+release/
+*.zip
+
 # Decompiled game code (large, user-specific)
 decompiled/
 
