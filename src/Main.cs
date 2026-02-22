@@ -1,6 +1,6 @@
+using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
-using HarmonyLib;
 
 [assembly: MelonInfo(typeof(AokanaAccess.Main), "Aokana Accessibility Mod", "1.0.0", "AccessibilityMod")]
 // Support main game and EXTRA1 - MelonLoader will load this mod for both games
