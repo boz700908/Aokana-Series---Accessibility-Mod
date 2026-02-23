@@ -20,21 +20,6 @@ namespace AokanaAccess.Patches
             QuickAccessHandler.Initialize(__instance);
             SettingsHandler.Initialize(__instance);
             SlotSaveHandler.Initialize(__instance);
-
-            // Update localization after game language is loaded
-            Loc.UpdateLanguage();
-        }
-
-        /// <summary>
-        /// Patch for EngineMain.SetLang method.
-        /// Update mod language when game language changes.
-        /// </summary>
-        [HarmonyPatch("SetLang")]
-        [HarmonyPostfix]
-        public static void SetLang_Postfix(EngineMain.Language newlang)
-        {
-            DebugLogger.Log($"EngineMain.SetLang called with: {newlang}");
-            Loc.UpdateLanguage();
         }
 
         /// <summary>

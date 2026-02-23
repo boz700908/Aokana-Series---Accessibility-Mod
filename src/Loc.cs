@@ -5,16 +5,17 @@ namespace AokanaAccess
     /// <summary>
     /// Localization system for all user-facing text.
     /// Now uses LocalizationConfig to load strings from JSON files.
-    /// Falls back to hardcoded English strings if JSON files are not available.
+    /// Falls back to hardcoded Chinese strings if JSON files are not available.
+    /// Language is fixed to Simplified Chinese (cn).
     /// </summary>
     public static class Loc
     {
         private static Dictionary<string, string> _fallbackStrings = new Dictionary<string, string>();
-        private static string _currentLanguage = "en";
+        private static string _currentLanguage = "cn"; // Fixed to Simplified Chinese
         private static bool _initialized = false;
 
         /// <summary>
-        /// Get the current language code (en, cn, tc, jp).
+        /// Get the current language code (always "cn").
         /// </summary>
         public static string CurrentLanguage
         {
@@ -23,70 +24,16 @@ namespace AokanaAccess
 
         /// <summary>
         /// Initialize the localization system.
-        /// Starts with English as default, will be updated when game language is detected.
+        /// Language is fixed to Simplified Chinese.
         /// </summary>
         public static void Initialize()
         {
-            // Start with English as default
-            _currentLanguage = "en";
+            // Fixed to Simplified Chinese
+            _currentLanguage = "cn";
             LoadFallbackStrings();
-            _initialized = true;
-            MelonLoader.MelonLogger.Msg("[Loc] Initialized with English, will update when game language is detected");
-        }
-
-        /// <summary>
-        /// Update language based on game settings.
-        /// Called after EngineMain is initialized.
-        /// </summary>
-        public static void UpdateLanguage()
-        {
-            if (!_initialized)
-            {
-                Initialize();
-                return;
-            }
-
-            DetectGameLanguage();
             LocalizationConfig.SetLanguage(_currentLanguage);
-        }
-
-        /// <summary>
-        /// Detect the current game language and set MOD language accordingly.
-        /// </summary>
-        private static void DetectGameLanguage()
-        {
-            try
-            {
-                // Get game language from EngineMain
-                var lang = EngineMain.lang;
-
-                string oldLanguage = _currentLanguage;
-
-                switch (lang)
-                {
-                    case EngineMain.Language.cn:
-                        _currentLanguage = "cn";
-                        break;
-                    case EngineMain.Language.tc:
-                        _currentLanguage = "tc";
-                        break;
-                    case EngineMain.Language.jp:
-                        _currentLanguage = "jp";
-                        break;
-                    default:
-                        _currentLanguage = "en";
-                        break;
-                }
-
-                if (oldLanguage != _currentLanguage)
-                {
-                    MelonLoader.MelonLogger.Msg($"[Loc] Language changed from {oldLanguage} to {_currentLanguage} (game language: {lang})");
-                }
-            }
-            catch (System.Exception ex)
-            {
-                MelonLoader.MelonLogger.Warning($"[Loc] Failed to detect game language: {ex.Message}, keeping current language: {_currentLanguage}");
-            }
+            _initialized = true;
+            MelonLoader.MelonLogger.Msg("[Loc] Initialized with Simplified Chinese (cn)");
         }
 
         /// <summary>
