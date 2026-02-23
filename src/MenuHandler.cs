@@ -670,6 +670,13 @@ namespace AokanaAccess
 
             DebugLogger.Log($"Getting announcement for object: {obj.name}");
 
+            // Skip if ChoiceHandler is active and this is a choice object
+            if (ChoiceHandler.AreChoicesActive() && obj.name.StartsWith("choice"))
+            {
+                DebugLogger.Log($"Skipping announcement for {obj.name} - ChoiceHandler is active");
+                return string.Empty;
+            }
+
             // Check if it's a voice bookmark item button (item0-item9)
             if (obj.name.StartsWith("item") && obj.name.Length <= 5)
             {
