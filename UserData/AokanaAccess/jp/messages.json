@@ -55,5 +55,18 @@
   "slot_load_success": "スロット {0} からロードしました",
   "slot_load_failed": "スロット {0} からのロードに失敗しました",
   "slot_save_invalid_state": "現在の状態ではセーブできません",
-  "slot_load_invalid_state": "現在の状態ではロードできません"
+  "slot_load_invalid_state": "現在の状態ではロードできません",
+  "menu_main": "メインメニュー",
+  "menu_open_failed": "メニューを開けませんでした",
+  "settings_opened": "設定を開きました",
+  "backlog_beginning": "バックログの先頭です",
+  "backlog_end": "バックログの末尾です",
+  "quick_save_done": "クイックセーブが完了しました",
+  "voice_bookmark_failed": "ボイスブックマークの保存に失敗しました",
+  "vol_master": "マスター音量",
+  "vol_bgm": "BGM音量",
+  "vol_sfx": "効果音音量",
+  "vol_voice": "ボイス音量",
+  "vol_movie": "ムービー音量",
+  "window_opacity": "ウィンドウの不透明度"
 }

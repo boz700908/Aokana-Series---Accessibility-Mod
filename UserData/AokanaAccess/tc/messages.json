@@ -55,5 +55,18 @@
   "slot_load_success": "已從槽位 {0} 讀取",
   "slot_load_failed": "從槽位 {0} 讀取失敗",
   "slot_save_invalid_state": "目前狀態無法儲存",
-  "slot_load_invalid_state": "目前狀態無法讀取"
+  "slot_load_invalid_state": "目前狀態無法讀取",
+  "menu_main": "主選單",
+  "menu_open_failed": "開啟選單失敗",
+  "settings_opened": "設定已開啟",
+  "backlog_beginning": "已到歷史記錄開頭",
+  "backlog_end": "已到歷史記錄末尾",
+  "quick_save_done": "快速儲存完成",
+  "voice_bookmark_failed": "儲存語音書籤失敗",
+  "vol_master": "主音量",
+  "vol_bgm": "背景音樂音量",
+  "vol_sfx": "音效音量",
+  "vol_voice": "語音音量",
+  "vol_movie": "影片音量",
+  "window_opacity": "視窗不透明度"
 }

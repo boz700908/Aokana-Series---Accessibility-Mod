@@ -55,5 +55,18 @@
   "slot_load_success": "Loaded from slot {0}",
   "slot_load_failed": "Failed to load from slot {0}",
   "slot_save_invalid_state": "Cannot save in current state",
-  "slot_load_invalid_state": "Cannot load in current state"
+  "slot_load_invalid_state": "Cannot load in current state",
+  "menu_main": "Main Menu",
+  "menu_open_failed": "Failed to open menu",
+  "settings_opened": "Settings opened",
+  "backlog_beginning": "At beginning of backlog",
+  "backlog_end": "At end of backlog",
+  "quick_save_done": "Quick save complete",
+  "voice_bookmark_failed": "Failed to save voice bookmark",
+  "vol_master": "Master Volume",
+  "vol_bgm": "BGM Volume",
+  "vol_sfx": "Sound Effects Volume",
+  "vol_voice": "Voice Volume",
+  "vol_movie": "Movie Volume",
+  "window_opacity": "Window Opacity"
 }
