@@ -2,6 +2,16 @@
 
 All notable changes to the Aokana Accessibility Mod will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+- 修复选项菜单焦点冲突 - 当ChoiceHandler激活时MenuHandler不再干扰，避免重复朗读
+- 修复编译配置 - 禁用TargetFrameworkAttribute生成以兼容.NET Framework 3.5
+- 移除角色名按钮的硬编码翻译，改用游戏原生文本
+
+### Changed
+- 优化选项菜单导航体验，确保只朗读选项文本而不是角色名
+
 ## [1.0.0] - 2026-02-20
 
 ### Added
